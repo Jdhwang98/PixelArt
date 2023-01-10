@@ -2,7 +2,7 @@
 
 void Application::run()
 {
-    //The grid for snake or pixel art
+    /* The grid for snake or pixel art */
     sf::RectangleShape grid;
     std::vector<sf::RectangleShape> many_grids;
 
@@ -11,7 +11,7 @@ void Application::run()
     float gap_size = 1.0f;
     const float x_pos = 10;
     const float y_pos = 10;
-    sf::Vector2f first_position{ x_pos,y_pos };
+    sf::Vector2f first_position{ x_pos, y_pos };
 
 
     many_grids.reserve(1000);
@@ -22,25 +22,21 @@ void Application::run()
 
     for (int i = 0; i < many_grids.size(); i++)
     {
-        many_grids[i].setPosition({ first_position.x , first_position.y });
+        many_grids[i].setPosition({ first_position.x, first_position.y });
         first_position.x += gap_size;
         first_position.x += x_pos;
         count++;
         if (count == limit)
         {
-
             limit += 115;
             first_position.x = x_pos;
             first_position.y += gap_size;
             first_position.y += y_pos;
-
         }
     }
 
-    //the actual window
+    /* Reference to the window */
     sf::RenderWindow window(sf::VideoMode(1920, 1080), "Pixel Art", sf::Style::Default);
-
-   
 
     while (window.isOpen()) {
 
@@ -53,8 +49,7 @@ void Application::run()
             if (event.type == sf::Event::Closed) {
 
                 window.close();
-                //for any event handlers put here
-
+                /* Any event handlers go here */
             }
         }
     
@@ -72,9 +67,9 @@ void Application::run()
                 }
             }
         }
-        //for all the stuff you want to draw
+        /* for all the stuff you want to draw */
         window.clear();
-        for (const auto& i : many_grids)
+        for (const auto &i : many_grids)
         {
             window.draw(i);
         }
